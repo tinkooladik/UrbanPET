@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="definitionViewModel"
+            type="com.tinkooladik.urbanpet.view.definition.DefinitionViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvTerm"
+            style="@style/Semibold.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@{@string/definition_term(definitionViewModel.term)}"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/definition_term" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDefinitions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTerm"
+            tools:listitem="@layout/item_definition" />
+
+        <include
+            android:id="@+id/progress"
+            layout="@layout/layout_progress"
+            android:visibility="@{definitionViewModel.loading ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AccentButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Regular">
+        <item name="android:fontFamily">@font/proxima_regular</item>
+    </style>
+
+    <style name="Regular.Black" parent="Regular">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Semibold">
+        <item name="android:fontFamily">@font/proxima_semibold</item>
+    </style>
+
+    <style name="Semibold.Black" parent="Semibold">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

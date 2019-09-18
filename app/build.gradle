@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+
+    defaultConfig {
+        applicationId "com.tinkooladik.urbanpet"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        all {
+            buildConfigField "String", "API_ENDPOINT", "\"https://mashape-community-urban-dictionary.p.rapidapi.com\""
+            buildConfigField "String", "API_HOST", "\"mashape-community-urban-dictionary.p.rapidapi.com\""
+            buildConfigField "String", "API_KEY", "\"c34f717c3cmsh1a8e9157104c654p115bd5jsna5fcda12baca\""
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def supportLibrary = '1.1.0'
+    implementation "androidx.appcompat:appcompat:${supportLibrary}"
+    implementation "androidx.fragment:fragment-ktx:${supportLibrary}"
+
+    def design = '1.0.0'
+    implementation "com.google.android.material:material:${design}"
+    implementation "androidx.recyclerview:recyclerview:${design}"
+    implementation "androidx.activity:activity-ktx:${design}"
+
+    def constraint = '2.0.0-beta2'
+    implementation "androidx.constraintlayout:constraintlayout:${constraint}"
+
+    def anko = '0.10.8'
+    implementation "org.jetbrains.anko:anko-commons:${anko}"
+
+    def kotlin = '1.3.41'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin}"
+
+    def glide = '4.9.0'
+    implementation "com.github.bumptech.glide:glide:${glide}"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    kapt "com.github.bumptech.glide:compiler:${glide}"
+
+    def dagger = '2.16'
+    implementation "com.google.dagger:dagger:${dagger}"
+    implementation "com.google.dagger:dagger-android:${dagger}"
+    implementation "com.google.dagger:dagger-android-support:${dagger}"
+    kapt "com.google.dagger:dagger-compiler:${dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${dagger}"
+
+    implementation project(":data")
+}
